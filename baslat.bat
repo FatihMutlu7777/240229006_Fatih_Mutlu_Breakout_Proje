@@ -1,5 +1,5 @@
 @echo off
-g++ main.c++ game.c++ raket.c++ -o oyun.exe -lsfml-graphics -lsfml-window -lsfml-system
+g++ main.c++ game.c++ raket.c++ tugla.c++ -o oyun.exe -lsfml-graphics -lsfml-window -lsfml-system   
 if %errorlevel% equ 0 (
     echo Derleme Basarili! Oyun baslatiliyor...
     .\oyun.exe

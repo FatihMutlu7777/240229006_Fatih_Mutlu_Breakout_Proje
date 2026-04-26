@@ -11,7 +11,7 @@ oyun::oyun(){
     ekran.setFramerateLimit(60);
     for(int i=0;i<3;i++){
         for(int j=0;j<10;j++){
-            tuglalar.push_back(tugla(j * 100.0f, i * 40.0f, 98.0f, 38.0f));
+            tuglalar.push_back(tugla(j * 80.0f, i * 30.0f, 78.0f,18.0f)); //80 px yana dizilir, 30px aşağı kayar,78px genişlik,18px yükseklik
         }
     }
 }
@@ -57,6 +57,6 @@ void oyun::render(){
     for (auto& t : tuglalar) {
         t.ciz(ekran);
     }
-    
+
     ekran.display();   // çizilen her şeyi anında ekranımızda görmemizi sağlar
 }
