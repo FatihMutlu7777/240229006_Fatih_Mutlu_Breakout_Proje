@@ -34,15 +34,17 @@ void oyun::processEvents(){
 }
 
 void oyun::update(){
+    raketim.guncelle();
 
 }
 
-// Ekran tasarımı 
+// Ekran tasarımı ve ekrana çizim(render)
 
 
-void oyun::render(){
+void oyun::render(){  
 
-    ekran.clear(Color(255,128,00));
+    ekran.clear(Color(00,00,22));
 
+    raketim.ciz(ekran);
     ekran.display();   // çizilen her şeyi anında ekranımızda görmemizi sağlar
 }
