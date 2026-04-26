@@ -1,5 +1,7 @@
 #include "game.h"
 #include "raket.h"
+using namespace sf;
+
 
 
 

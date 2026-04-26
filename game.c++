@@ -1,4 +1,6 @@
 #include "game.h"
+using namespace sf;
+
 
 
 // Ekran gözükmesi için
@@ -7,6 +9,11 @@ oyun::oyun(){
     ekran.create(VideoMode(800,600), "Breakout");
 
     ekran.setFramerateLimit(60);
+    for(int i=0;i<3;i++){
+        for(int j=0;j<10;j++){
+            tuglalar.push_back(tugla(j * 100.0f, i * 40.0f, 98.0f, 38.0f));
+        }
+    }
 }
 
 // Run time da olay kontrolü için
@@ -46,5 +53,10 @@ void oyun::render(){
     ekran.clear(Color(00,00,22));
 
     raketim.ciz(ekran);
+    
+    for (auto& t : tuglalar) {
+        t.ciz(ekran);
+    }
+    
     ekran.display();   // çizilen her şeyi anında ekranımızda görmemizi sağlar
 }
