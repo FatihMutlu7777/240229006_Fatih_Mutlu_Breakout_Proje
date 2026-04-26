@@ -1,0 +1,23 @@
+# Editör/IDE Klasörleri
+.vscode/
+
+# Derleme (Build) ve Çıktı Klasörleri
+build/
+out/
+bin/
+obj/
+
+# Derlenmiş Dosyalar
+*.exe
+*.o
+*.obj
+*.dll
+*.pdb
+*.ilk
+
+# İşletim Sistemi Dosyaları
+.DS_Store
+Thumbs.db
+
+# SFML Kütüphanesi
+SFML-2.6.1/
