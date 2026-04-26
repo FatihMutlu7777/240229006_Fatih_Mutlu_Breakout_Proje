@@ -21,3 +21,8 @@ Thumbs.db
 
 # SFML Kütüphanesi
 SFML-2.6.1/
+
+SFML/
+*.exe
+*.o
+*.dll

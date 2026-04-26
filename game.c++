@@ -32,3 +32,17 @@ void oyun::processEvents(){
     }
     
 }
+
+void oyun::update(){
+
+}
+
+// Ekran tasarımı 
+
+
+void oyun::render(){
+
+    ekran.clear(Color(255,128,00));
+
+    ekran.display();   // çizilen her şeyi anında ekranımızda görmemizi sağlar
+}
