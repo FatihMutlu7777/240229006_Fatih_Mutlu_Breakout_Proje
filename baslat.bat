@@ -4,6 +4,6 @@ g++ main.c++ game.c++ raket.c++ tugla.c++ top.c++ -o oyun.exe -lsfml-graphics -l
     echo Derleme Basarili! Oyun baslatiliyor...
     .\oyun.exe
 ) else (
-    echo Bir hata olustu, kodlarini kontrol et Baba Pro!
+    echo Bir hata olustu, kodlarini kontrol et !
     pause
 )
