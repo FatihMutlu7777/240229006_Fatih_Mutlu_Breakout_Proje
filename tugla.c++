@@ -1,4 +1,8 @@
 #include "tuglalar.h"
+#include "top.h"
+using namespace sf;
+
+
 
 tugla::tugla(float x, float y ,float genislik ,float yukseklik){
     TuglaSekli.setPosition(x,y);
@@ -15,5 +19,11 @@ void tugla::ciz(RenderWindow& pencere){
         pencere.draw(TuglaSekli);
 
     }
+
+}
+
+
+void top::tugladansek(){
+    hız_y=-hız_y;
 
 }

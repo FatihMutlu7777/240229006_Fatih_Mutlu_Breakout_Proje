@@ -45,9 +45,10 @@ void oyun::processEvents(){
 void oyun::update(){
     raketim.guncelle();
     topum.guncelle();
-    if(topum.getSinirlar().intersects(raketim.getSinirlar())){
+    if(topum.getSinirlar().intersects(raketim.getSinirlar())){ //Topun sınırı raketin sınırıyla kesiştimi demek
         topum.rakettensek();
     }
+    
 
 }
 
@@ -61,6 +62,12 @@ void oyun::render(){
     raketim.ciz(ekran);
     
     for (auto& t : tuglalar) {
+        if(!t.KirildiMi && topum.getSinirlar().intersects(t.getSinirlar())){
+            t.KirildiMi=true;
+        
+        topum.tugladansek();
+        break;
+        }
         t.ciz(ekran);
     }
     topum.ciz(ekran);

@@ -14,6 +14,7 @@ class top{
     void guncelle();
     void ciz(RenderWindow& pencere);
     void rakettensek();
+    void tugladansek();
 
     FloatRect getSinirlar() { return TopSekli.getGlobalBounds(); } // Bu kısım araştırılacak
 
