@@ -11,7 +11,9 @@ oyun::oyun(){
     ekran.setFramerateLimit(60);
     for(int i=0;i<3;i++){
         for(int j=0;j<10;j++){
-            tuglalar.push_back(tugla(j * 80.0f, i * 30.0f, 78.0f,18.0f)); //80 px yana dizilir, 30px aşağı kayar,78px genişlik,18px yükseklik
+            float ekstraKoridor = (j / 2) * 80.0f; // 2 sütünda bir ekstra 40px boşluk
+            float xPozisyonu = (j * 80.0f) + ekstraKoridor; // Burda ekstra mesafeyi ekledik
+            tuglalar.push_back(tugla(xPozisyonu + 15.0f, i * 70.0f + 50.0f, 70.0f, 18.0f)); //80 px yana dizilir, 30px aşağı kayar,78px genişlik,18px yükseklik
         }
     }
 }
