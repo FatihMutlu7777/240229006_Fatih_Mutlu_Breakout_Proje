@@ -30,6 +30,10 @@ void top::rakettensek(float raketMerkezi){
     if(hız_y>0){
         hız_y=-hız_y; // Yukarı fırlatcak
 
+        if (hız_y > -15.0f) { 
+            hız_y = hız_y * 1.1f; // Hızı %5 arttırdık
+        }
+
         float TopMerkezi=TopSekli.getPosition().x + TopSekli.getRadius();
 
 
