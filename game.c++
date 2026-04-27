@@ -5,7 +5,7 @@ using namespace sf;
 
 // Ekran gözükmesi için
 
-oyun::oyun(){
+oyun::oyun():topum(400.0f, 300.0f){
     ekran.create(VideoMode(800,600), "Breakout");
 
     ekran.setFramerateLimit(60);
@@ -44,6 +44,10 @@ void oyun::processEvents(){
 
 void oyun::update(){
     raketim.guncelle();
+    topum.guncelle();
+    if(topum.getSinirlar().intersects(raketim.getSinirlar())){
+        topum.rakettensek();
+    }
 
 }
 
@@ -59,6 +63,7 @@ void oyun::render(){
     for (auto& t : tuglalar) {
         t.ciz(ekran);
     }
+    topum.ciz(ekran);
 
     ekran.display();   // çizilen her şeyi anında ekranımızda görmemizi sağlar
 }

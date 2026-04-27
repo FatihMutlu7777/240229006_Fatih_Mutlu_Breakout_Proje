@@ -2,6 +2,8 @@
 #include <vector>
 #include "raket.h"
 #include "tuglalar.h"
+#include "top.h"
+
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -15,6 +17,7 @@ class oyun{
     Event olay;
     raket raketim;
     std::vector<tugla> tuglalar;
+    top topum;
    
 
     public:
