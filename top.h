@@ -13,7 +13,7 @@ class top{
     top(float x, float y);
     void guncelle();
     void ciz(RenderWindow& pencere);
-    void rakettensek();
+    void rakettensek(float raketMerkezi);
     void tugladansek();
 
     FloatRect getSinirlar() { return TopSekli.getGlobalBounds(); } // Bu kısım araştırılacak

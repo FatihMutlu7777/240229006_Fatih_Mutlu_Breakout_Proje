@@ -26,10 +26,18 @@ void top::guncelle(){
 
 }
 
-void top::rakettensek(){
+void top::rakettensek(float raketMerkezi){
     if(hız_y>0){
         hız_y=-hız_y; // Yukarı fırlatcak
+
+        float TopMerkezi=TopSekli.getPosition().x + TopSekli.getRadius();
+
+
+        float fark=TopMerkezi-raketMerkezi;
+
+        hız_x=fark*0.15f;
     }
+
 }
 
 void top::ciz(RenderWindow& pencere){
