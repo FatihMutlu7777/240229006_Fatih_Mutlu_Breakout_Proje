@@ -5,7 +5,7 @@ using namespace sf;
 
 // Ekran gözükmesi için
 
-oyun::oyun():topum(400.0f, 300.0f){
+oyun::oyun():topum(400.0f, 300.0f),skorEkranım(20.f,20.f){
     ekran.create(VideoMode(800,600), "Breakout");
 
     ekran.setFramerateLimit(60);
@@ -45,13 +45,25 @@ void oyun::processEvents(){
 void oyun::update(){
     raketim.guncelle();
     topum.guncelle();
+
+
+     for (auto& t : tuglalar) {
+        if(!t.KirildiMi && topum.getSinirlar().intersects(t.getSinirlar())){ // Burda top tuğla sınırlarına çarpmışmı baılır eğer true dönerse aşağıda tuğlaları kaldırma işlemi olur ardından top -hız_y olur ve break yapıp döngüyü bitiririz yoksa sonsuz döngü olup hepsini silebilir
+            t.KirildiMi=true;
+        
+        topum.tugladansek();
+        skorEkranım.SkorEkle(1);
+        break;
+        }
+
+
     if(topum.getSinirlar().intersects(raketim.getSinirlar())){ //Topun sınırı raketin sınırıyla kesiştimi demek
        
         float RaketMerkezi=raketim.getSinirlar().left +(raketim.getSinirlar().width / 2.0f); // 2 ye bölüyoz çünü merkezini eklicez x in başlangıcına böylece tam orta nokta bulcaz neden .left yaptık çünkü SFML de right yok left top width height var right yapıncada açılıyo çalışıyor ama hata veriyor neden burda yaptık burası yönetici topu değiştircez top.c++ da yapsam include lar ve fazla fonksyonlar gerekicekti bizde yöneticide yaptık ara işlemi ve değeri top.c++ a aktardık 
         
         topum.rakettensek(RaketMerkezi);// Merkeze göre nasıl sektiği merkez koordinatını veririz buna göre ne kadar sapma varsa -hız_x ona göre belirlenir sekmede
     }
-    
+}
 
 }
 
@@ -61,19 +73,21 @@ void oyun::update(){
 void oyun::render(){  
 
     ekran.clear(Color(00,00,22));
-
     raketim.ciz(ekran);
-    
-    for (auto& t : tuglalar) {
-        if(!t.KirildiMi && topum.getSinirlar().intersects(t.getSinirlar())){ // Burda top tuğla sınırlarına çarpmışmı baılır eğer true dönerse aşağıda tuğlaları kaldırma işlemi olur ardından top -hız_y olur ve break yapıp döngüyü bitiririz yoksa sonsuz döngü olup hepsini silebilir
-            t.KirildiMi=true;
-        
-        topum.tugladansek();
-        break;
-        }
-        t.ciz(ekran);
-    }
     topum.ciz(ekran);
+
+
+    for (auto& t : tuglalar) {
+        // SİZİN TESPİTİNİZ: Sadece kırılmamış olanları ekrana çiz!
+        if(!t.KirildiMi) {
+            t.ciz(ekran);
+        }
+    }
+
+
+    
+    topum.ciz(ekran);
+    skorEkranım.ciz(ekran);
 
     ekran.display();   // çizilen her şeyi anında ekranımızda görmemizi sağlar
 }

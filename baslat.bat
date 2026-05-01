@@ -1,9 +1,14 @@
 @echo off
-g++ main.c++ game.c++ raket.c++ tugla.c++ top.c++ -o oyun.exe -lsfml-graphics -lsfml-window -lsfml-system
-.\oyun.exeif %errorlevel% equ 0 (
-    echo Derleme Basarili! Oyun baslatiliyor...
-    .\oyun.exe
-) else (
-    echo Bir hata olustu, kodlarini kontrol et !
+echo Proje derleniyor, lutfen bekleyiniz...
+
+g++ main.c++ game.c++ raket.c++ top.c++ tugla.c++ skor.c++ -o oyun.exe -lsfml-graphics -lsfml-window -lsfml-system
+
+if %errorlevel% neq 0 (
+    echo.
+    echo DERLEME HATASI! Lutfen yukaridaki hata mesajlarini kontrol ediniz.
     pause
+) else (
+    echo.
+    echo Derleme basarili! Oyun baslatiliyor...
+    oyun.exe
 )
