@@ -30,8 +30,8 @@ void top::rakettensek(float raketMerkezi){
     if(hız_y>0){
         hız_y=-hız_y; // Yukarı fırlatcak
 
-        if (hız_y > -15.0f) { 
-            hız_y = hız_y * 1.05f; // Hızı %5 arttırdık
+        if (hız_y > -1.0f) { 
+            hız_y = hız_y * 1.03f; // Hızı %3 arttırdık
         }
 
         float TopMerkezi=TopSekli.getPosition().x + TopSekli.getRadius();
@@ -43,6 +43,7 @@ void top::rakettensek(float raketMerkezi){
     }
 
 }
+
 
 void top::ciz(RenderWindow& pencere){
     pencere.draw(TopSekli);

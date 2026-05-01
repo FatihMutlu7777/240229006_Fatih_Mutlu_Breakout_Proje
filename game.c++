@@ -13,7 +13,7 @@ oyun::oyun():topum(400.0f, 450.0f),skorEkranım(20.f,20.f){
 // 8 farklı küme için 2x4'lük bir renk matrisi oluşturuyoruz
 sf::Color kumeRenkleri[2][4] = {
     {sf::Color::Blue, sf::Color::Yellow, sf::Color::Magenta, sf::Color::Cyan},
-    {sf::Color(163,66,86), sf::Color(70,76,15), sf::Color(0,153,76), sf::Color(255, 165, 0)},
+    {sf::Color(163,66,86), sf::Color(255, 165, 0), sf::Color(0,153,76), sf::Color(255, 0, 0)},
     
 };
 
@@ -83,9 +83,10 @@ void oyun::update(){
 
 
      for (auto& t : tuglalar) {
+        
         if(!t.KirildiMi && topum.getSinirlar().intersects(t.getSinirlar())){ // Burda top tuğla sınırlarına çarpmışmı baılır eğer true dönerse aşağıda tuğlaları kaldırma işlemi olur ardından top -hız_y olur ve break yapıp döngüyü bitiririz yoksa sonsuz döngü olup hepsini silebilir
             t.KirildiMi=true;
-        
+    
         topum.tugladansek();
         skorEkranım.SkorEkle(1);
         break;
@@ -98,6 +99,11 @@ void oyun::update(){
         
         topum.rakettensek(RaketMerkezi);// Merkeze göre nasıl sektiği merkez koordinatını veririz buna göre ne kadar sapma varsa -hız_x ona göre belirlenir sekmede
     }
+}
+
+
+if(topum.getSinirlar().top>600.0f){
+    ekran.close();
 }
 
 }

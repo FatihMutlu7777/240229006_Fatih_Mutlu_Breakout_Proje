@@ -16,6 +16,8 @@ class top{
     void rakettensek(float raketMerkezi);
     void tugladansek();
 
+
+
     FloatRect getSinirlar() { return TopSekli.getGlobalBounds(); } // Bu kısım araştırılacak
 
     
