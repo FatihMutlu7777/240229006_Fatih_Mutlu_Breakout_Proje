@@ -10,14 +10,14 @@ oyun::oyun():topum(400.0f, 450.0f),skorEkranım(20.f,20.f){
 
     ekran.setFramerateLimit(60);
 
-// 12 farklı küme için 3x4'lük bir renk matrisi (2D Array) oluşturuyoruz
+// 8 farklı küme için 2x4'lük bir renk matrisi oluşturuyoruz
 sf::Color kumeRenkleri[2][4] = {
     {sf::Color::Blue, sf::Color::Yellow, sf::Color::Magenta, sf::Color::Cyan},
-    {sf::Color(163,66,86), sf::Color(70,76,15), sf::Color(100,250,140), sf::Color(255, 165, 0)}, // Turuncu
+    {sf::Color(163,66,86), sf::Color(70,76,15), sf::Color(0,153,76), sf::Color(255, 165, 0)},
     
 };
 
-// Toplam 12 satır ve 20 sütunluk döngü
+// Toplam 8 satır ve 20 sütunluk döngü
 for (int i = 0; i < 8; i++) { 
     for (int j = 0; j < 20; j++) { 
         
@@ -30,9 +30,9 @@ for (int i = 0; i < 8; i++) {
         if (j >= 10) xPozisyonu += 40.0f; 
         if (j >= 15) xPozisyonu += 40.0f; 
 
-        // 3. YATAY KORİDORLAR (Satırları 3 Kümeye Ayırma)
+        // 3. YATAY KORİDORLAR (Satırları 2 Kümeye Ayırma)
         if (i >= 4) yPozisyonu += 40.0f; 
-        if (i >= 8) yPozisyonu += 40.0f; 
+       
 
         // 4. EKRAN BAŞLANGIÇ NOKTALARI
         xPozisyonu += 92.5f; 
