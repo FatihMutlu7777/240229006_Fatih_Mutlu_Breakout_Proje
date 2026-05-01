@@ -5,7 +5,7 @@ top::top(float x,float y){
     TopSekli.setFillColor(Color(153,204,255));
     TopSekli.setPosition(x,y);
     
-    hız_x=5.0f;
+    hız_x=0.0f;
     hız_y=5.0f;
 
 }
@@ -31,7 +31,7 @@ void top::rakettensek(float raketMerkezi){
         hız_y=-hız_y; // Yukarı fırlatcak
 
         if (hız_y > -15.0f) { 
-            hız_y = hız_y * 1.1f; // Hızı %5 arttırdık
+            hız_y = hız_y * 1.05f; // Hızı %5 arttırdık
         }
 
         float TopMerkezi=TopSekli.getPosition().x + TopSekli.getRadius();
