@@ -16,6 +16,7 @@ class top{
     void rakettensek(float raketMerkezi);
     void tugladansek();
     void baslangıca_don_top();
+    void hızı_resetle();
 
 
 

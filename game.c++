@@ -64,6 +64,8 @@ void oyun::oyunu_sıfırla(){
 
     topum.baslangıca_don_top();
     raketim.baslangıca_don_raket();
+    topum.hızı_resetle();
+
 
     for (auto& t : tuglalar) {
         t.KirildiMi = false;
@@ -104,6 +106,15 @@ void oyun::processEvents(){
 
 void oyun::update(){
 
+    if(topum.getSinirlar().top>600.0f){
+
+        oyun_bittimi=true;
+        bitis_ekranım.skoru_ayarla(skorEkranım.getskor());
+
+    }
+
+
+
     if(oyun_bittimi){
         if (Keyboard::isKeyPressed(Keyboard::Enter)) {
             oyunu_sıfırla();
@@ -118,11 +129,6 @@ void oyun::update(){
     }
 
 
-    if(topum.getSinirlar().top>600.0f){
-
-        oyun_bittimi=true;
-        bitis_ekranım.skoru_ayarla(skorEkranım.getskor());
-    }
     raketim.guncelle();
     topum.guncelle();
 
