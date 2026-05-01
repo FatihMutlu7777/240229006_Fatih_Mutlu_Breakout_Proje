@@ -15,6 +15,7 @@ class top{
     void ciz(RenderWindow& pencere);
     void rakettensek(float raketMerkezi);
     void tugladansek();
+    void baslangıca_don_top();
 
 
 

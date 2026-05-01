@@ -13,6 +13,7 @@ class raket{
     public:
     raket();
     void guncelle();
+    void baslangıca_don_raket();
     void ciz(RenderWindow& pencere); //raket ekranda gözüksün diye
 
     FloatRect getSinirlar() { return sekli.getGlobalBounds(); }

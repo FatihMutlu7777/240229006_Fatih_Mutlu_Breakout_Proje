@@ -23,6 +23,15 @@ void skorEkrani::SkorEkle(int puan){
     yazi.setString("Skor: "+ to_string(skor));
 }
 
+int skorEkrani::getskor(){
+    return skor;
+}
+
+void skorEkrani::skoruSıfırla(){
+    skor=0;
+    yazi.setString("skor: 0");
+}
+
 
  void skorEkrani::ciz(RenderWindow& pencere){
     pencere.draw(yazi);

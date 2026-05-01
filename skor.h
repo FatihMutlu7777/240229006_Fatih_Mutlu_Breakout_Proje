@@ -15,8 +15,10 @@ class skorEkrani{
     public:
 
     skorEkrani(float x,float y);
-
     void SkorEkle(int puan);
+    int getskor();
+    void skoruSıfırla();
+    
 
     void ciz(RenderWindow& pencere);
 

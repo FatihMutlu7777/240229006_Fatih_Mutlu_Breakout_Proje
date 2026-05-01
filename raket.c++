@@ -4,8 +4,10 @@ raket::raket(){
     hız=15.0f; // Raketin sağa sola gitme hızı
     sekli.setSize(Vector2f(100.0f,20.0f));
     sekli.setFillColor(Color::White);
-    sekli.setPosition(340.0f, 550.0f);
+    sekli.setPosition(350.0f, 550.0f);
 }
+
+
 
 void raket::guncelle(){
     if(Keyboard::isKeyPressed(Keyboard::Left)&& sekli.getPosition().x>0){
@@ -18,6 +20,12 @@ void raket::guncelle(){
 
     }
 
+
+}
+
+
+void raket::baslangıca_don_raket(){
+    sekli.setPosition(350.0f, 550.0f);
 
 }
 

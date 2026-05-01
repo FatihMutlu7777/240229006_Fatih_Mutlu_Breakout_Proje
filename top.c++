@@ -45,6 +45,11 @@ void top::rakettensek(float raketMerkezi){
 }
 
 
+void top::baslangıca_don_top(){
+    TopSekli.setPosition(400.0f, 300.0f);
+}
+
+
 void top::ciz(RenderWindow& pencere){
     pencere.draw(TopSekli);
 }

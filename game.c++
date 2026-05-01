@@ -5,9 +5,9 @@ using namespace sf;
 
 // Ekran gözükmesi için
 
-oyun::oyun():topum(400.0f, 450.0f),skorEkranım(20.f,20.f){
+oyun::oyun():topum(400.0f, 450.0f),skorEkranım(20.f,20.f),bitis_ekranım(400.f,300.0f){
     ekran.create(VideoMode(800,600), "Breakout");
-
+    oyun_bittimi=false;
     ekran.setFramerateLimit(60);
 
 // 8 farklı küme için 2x4'lük bir renk matrisi oluşturuyoruz
@@ -55,6 +55,24 @@ for (int i = 0; i < 8; i++) {
 
 // Run time da olay kontrolü için
 
+
+
+void oyun::oyunu_sıfırla(){
+    oyun_bittimi=false;
+    skorEkranım.skoruSıfırla();
+
+
+    topum.baslangıca_don_top();
+    raketim.baslangıca_don_raket();
+
+    for (auto& t : tuglalar) {
+        t.KirildiMi = false;
+    }
+    
+}
+
+
+
 void oyun::calisma(){
     while (ekran.isOpen())
     {
@@ -77,7 +95,34 @@ void oyun::processEvents(){
     
 }
 
+
+
+
+
+
+
+
 void oyun::update(){
+
+    if(oyun_bittimi){
+        if (Keyboard::isKeyPressed(Keyboard::Enter)) {
+            oyunu_sıfırla();
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+            ekran.close();
+        }
+        
+        return ;
+
+
+    }
+
+
+    if(topum.getSinirlar().top>600.0f){
+
+        oyun_bittimi=true;
+        bitis_ekranım.skoru_ayarla(skorEkranım.getskor());
+    }
     raketim.guncelle();
     topum.guncelle();
 
@@ -102,10 +147,6 @@ void oyun::update(){
 }
 
 
-if(topum.getSinirlar().top>600.0f){
-    ekran.close();
-}
-
 }
 
 // Ekran tasarımı ve ekrana çizim(render)
@@ -116,6 +157,7 @@ void oyun::render(){
     ekran.clear(Color(00,00,22));
     raketim.ciz(ekran);
     topum.ciz(ekran);
+
 
 
     for (auto& t : tuglalar) {
@@ -130,5 +172,9 @@ void oyun::render(){
     topum.ciz(ekran);
     skorEkranım.ciz(ekran);
 
+    if(oyun_bittimi){
+            bitis_ekranım.ciz(ekran);
+
+    }
     ekran.display();   // çizilen her şeyi anında ekranımızda görmemizi sağlar
 }
