@@ -5,17 +5,52 @@ using namespace sf;
 
 // Ekran gözükmesi için
 
-oyun::oyun():topum(400.0f, 300.0f),skorEkranım(20.f,20.f){
+oyun::oyun():topum(400.0f, 450.0f),skorEkranım(20.f,20.f){
     ekran.create(VideoMode(800,600), "Breakout");
 
     ekran.setFramerateLimit(60);
-    for(int i=0;i<3;i++){
-        for(int j=0;j<10;j++){
-            float ekstraKoridor = (j / 2) * 80.0f; // 2 sütünda bir ekstra 40px boşluk
-            float xPozisyonu = (j * 80.0f) + ekstraKoridor; // Burda ekstra mesafeyi ekledik
-            tuglalar.push_back(tugla(xPozisyonu + 15.0f, i * 70.0f + 50.0f, 70.0f, 18.0f)); //80 px yana dizilir, 30px aşağı kayar,78px genişlik,18px yükseklik
-        }
+
+// 12 farklı küme için 3x4'lük bir renk matrisi (2D Array) oluşturuyoruz
+sf::Color kumeRenkleri[2][4] = {
+    {sf::Color::Blue, sf::Color::Yellow, sf::Color::Magenta, sf::Color::Cyan},
+    {sf::Color(163,66,86), sf::Color(70,76,15), sf::Color(100,250,140), sf::Color(255, 165, 0)}, // Turuncu
+    
+};
+
+// Toplam 12 satır ve 20 sütunluk döngü
+for (int i = 0; i < 8; i++) { 
+    for (int j = 0; j < 20; j++) { 
+        
+        // 1. STANDART ARALIK HESABI 
+        float xPozisyonu = j * 25.0f; 
+        float yPozisyonu = i * 25.0f; 
+
+        // 2. DİKEY KORİDORLAR (Sütunları 4 Kümeye Ayırma)
+        if (j >= 5) xPozisyonu += 40.0f; 
+        if (j >= 10) xPozisyonu += 40.0f; 
+        if (j >= 15) xPozisyonu += 40.0f; 
+
+        // 3. YATAY KORİDORLAR (Satırları 3 Kümeye Ayırma)
+        if (i >= 4) yPozisyonu += 40.0f; 
+        if (i >= 8) yPozisyonu += 40.0f; 
+
+        // 4. EKRAN BAŞLANGIÇ NOKTALARI
+        xPozisyonu += 92.5f; 
+        yPozisyonu += 50.0f; 
+
+        // 5. KÜME RENGİNİ TESPİT ETME (Mantıksal Gruplama)
+        // C++ tam sayıları bölerken ondalıkları atar. 
+        // Örneğin j=0,1,2,3,4 için (j/5) her zaman 0 sonucunu verir.
+        int kumeSatiri = i / 4; // 0, 1 veya 2 değerini üretir
+        int kumeSutunu = j / 5; // 0, 1, 2 veya 3 değerini üretir
+        
+        // Matristen ilgili rengi seç
+        sf::Color gecerliRenk = kumeRenkleri[kumeSatiri][kumeSutunu];
+
+        // 6. TUĞLAYI OLUŞTUR VE LİSTEYE EKLE (Rengi parametre olarak yolluyoruz)
+        tuglalar.push_back(tugla(xPozisyonu, yPozisyonu, 20.0f, 20.0f, gecerliRenk)); 
     }
+}
 }
 
 // Run time da olay kontrolü için

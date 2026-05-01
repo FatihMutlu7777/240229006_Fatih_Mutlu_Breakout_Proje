@@ -1,7 +1,7 @@
 #include "raket.h"
 
 raket::raket(){
-    hız=10.0f; // Raketin sağa sola gitme hızı
+    hız=15.0f; // Raketin sağa sola gitme hızı
     sekli.setSize(Vector2f(100.0f,20.0f));
     sekli.setFillColor(Color::White);
     sekli.setPosition(340.0f, 550.0f);

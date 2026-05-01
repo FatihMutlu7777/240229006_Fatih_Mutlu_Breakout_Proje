@@ -4,12 +4,13 @@ using namespace sf;
 
 
 
-tugla::tugla(float x, float y ,float genislik ,float yukseklik){
+tugla::tugla(float x, float y ,float genislik ,float yukseklik,Color renk){
     TuglaSekli.setPosition(x,y);
     TuglaSekli.setSize(Vector2f(genislik,yukseklik));
     TuglaSekli.setFillColor(Color::Yellow);
     TuglaSekli.setOutlineThickness(5);
     TuglaSekli.setOutlineColor(Color(00,02,18));
+    TuglaSekli.setFillColor(renk);
 
 }
 

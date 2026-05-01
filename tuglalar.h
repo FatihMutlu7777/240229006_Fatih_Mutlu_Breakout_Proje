@@ -12,7 +12,7 @@ class tugla{
     
     FloatRect getSinirlar() { return TuglaSekli.getGlobalBounds(); }
 
-    tugla(float x, float y ,float genislik ,float yukseklik);
+    tugla(float x, float y ,float genislik ,float yukseklik,Color renk);
     void ciz(RenderWindow& pencere); // NOT RenderWindow& pencere bu kısım detaylı araştırılacak
 
     
